@@ -28,9 +28,9 @@ export const TodoItem = ({ todo }: { todo: ITodo }) => {
 					type="checkbox"
 					checked={status}
 					onChange={handleChange}
-					className="w-5 h-5 cursor-pointer"
+					className="w-5 h-5 cursor-pointer flex-shrink-0"
 				/>
-				<span className={`${status ? "line-through text-gray-400" : ""}`}>
+				<span className={`${status ? "line-through text-gray-400 " : ""}`}>
 					{todo.todo}
 				</span>
 			</label>

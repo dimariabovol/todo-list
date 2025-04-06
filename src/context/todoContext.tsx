@@ -7,7 +7,11 @@ export const TodoContext = createContext<ITodoContext>({} as ITodoContext);
 const todoReducer = (state: ITodosState, action: TTodoAction): ITodosState => {
 	switch (action.type) {
 		case "GET_TODOS":
-			return { ...state, todos: action.payload };
+			return {
+				...state,
+				todos: action.payload.todos,
+				total: action.payload.total,
+			};
 		case "ADD_TODO":
 			return { ...state, todos: [...state.todos, action.payload] };
 		case "UPDATE_TODO":
@@ -25,12 +29,12 @@ const todoReducer = (state: ITodosState, action: TTodoAction): ITodosState => {
 };
 
 export const TodoProvider = ({ children }: { children: React.ReactNode }) => {
-	const [state, dispatch] = useReducer(todoReducer, { todos: [] });
+	const [state, dispatch] = useReducer(todoReducer, { todos: [], total: 0 });
 
 	useEffect(() => {
 		const getTodos = async () => {
-			const todos = await todoService.getTodos();
-			dispatch({ type: "GET_TODOS", payload: todos });
+			const data = await todoService.getTodos();
+			dispatch({ type: "GET_TODOS", payload: data });
 		};
 
 		getTodos();

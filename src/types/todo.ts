@@ -7,6 +7,7 @@ export interface ITodo {
 
 export interface ITodosState {
 	todos: ITodo[];
+	total: number;
 }
 
 export interface ITodoContext {
@@ -15,6 +16,6 @@ export interface ITodoContext {
 }
 
 export type TTodoAction =
-	| { type: "GET_TODOS"; payload: ITodo[] }
+	| { type: "GET_TODOS"; payload: ITodosState }
 	| { type: "ADD_TODO"; payload: ITodo }
 	| { type: "UPDATE_TODO"; payload: ITodo };

@@ -3,11 +3,15 @@ import { ITodo } from "../types/todo";
 const API_URL = "https://dummyjson.com/todos";
 
 export const todoService = {
-	async getTodos(): Promise<ITodo[]> {
-		const res = await fetch(`${API_URL}?limit=5`);
+	async getTodos(
+		limit: number = 5,
+		skip: number = 0
+	): Promise<{ todos: ITodo[]; total: number }> {
+		const res = await fetch(`${API_URL}?limit=${limit}&skip=${skip}`);
 		const data = await res.json();
 
-		return data.todos;
+		data.total = 25; // intentional truncation
+		return data;
 	},
 	async addTodo(todo: ITodo): Promise<ITodo> {
 		const res = await fetch(`${API_URL}/add`, {
