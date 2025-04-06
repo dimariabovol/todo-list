@@ -23,6 +23,12 @@ export const todoService = {
 
 		return data;
 	},
+	async deleteTodo(id: number): Promise<ITodo> {
+		const res = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+		const data = await res.json();
+
+		return data;
+	},
 	async updateTodoStatus(id: number, status: boolean): Promise<ITodo> {
 		const res = await fetch(`${API_URL}/${id}`, {
 			method: "PATCH",
