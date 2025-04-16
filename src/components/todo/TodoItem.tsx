@@ -27,22 +27,28 @@ export const TodoItem = ({ todo }: { todo: ITodo }) => {
 	};
 
 	return (
-		<div className="flex items-center justify-between p-3 border border-gray-300 rounded-md mb-2">
+		<div className="flex items-center justify-between p-3 border border-gray-300 dark:border-gray-600 rounded-md mb-2 bg-white dark:bg-gray-700 transition-colors">
 			<label className="flex items-center gap-2 flex-grow cursor-pointer">
 				<input
 					type="checkbox"
 					checked={status}
 					onChange={handleUpdateChange}
-					className="w-5 h-5 cursor-pointer flex-shrink-0"
+					className="w-5 h-5 cursor-pointer flex-shrink-0 accent-blue-500 dark:accent-blue-400"
 				/>
-				<span className={`${status ? "line-through text-gray-400 " : ""}`}>
+				<span
+					className={`${
+						status
+							? "line-through text-gray-400 dark:text-gray-500"
+							: "text-gray-800 dark:text-gray-200"
+					}`}
+				>
 					{todo.todo}
 				</span>
 			</label>
 			<button
 				onClick={handleDeleteChange}
-				className="p-2 text-red-500 hover:bg-red-100 rounded-full transition-colors"
-				aria-label="Delete todo"
+				className="p-2 text-red-500 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-full transition-colors"
+				aria-label="Delete"
 			>
 				<svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 					<path

@@ -20,7 +20,8 @@ export const Pagination = () => {
 					<li key={index}>
 						<button
 							onClick={() => handleClick(limit, index * skip)}
-							className="px-3 py-1 border rounded bg-gray-100 hover:bg-gray-200 text-gray-700"
+							className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 transition-colors"
+							aria-label={`Page ${index + 1}`}
 						>
 							{index + 1}
 						</button>
